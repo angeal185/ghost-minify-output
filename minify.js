@@ -1,4 +1,4 @@
-/* to be placed at ghost/core/server/middleware/minify/ */
+/* to be placed at ghost/core/server/middleware/ */
 var Minifier, exports;
 
 Minifier = require('html-minifier');
