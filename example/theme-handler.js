@@ -1,3 +1,5 @@
+/*  ghost/core/server/middleware/theme-handler.js */
+
 var _      = require('lodash'),
     fs     = require('fs'),
     path   = require('path'),
