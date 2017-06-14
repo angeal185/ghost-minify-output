@@ -1,3 +1,6 @@
+/*  ghost/core/server/middleware/index.js */
+
+
 var bodyParser      = require('body-parser'),
     compress        = require('compression'),
     config          = require('../config'),
@@ -36,7 +39,7 @@ var bodyParser      = require('body-parser'),
     labs             = require('./labs'),
     helpers          = require('../helpers'),
 
-	////////////////////////////////////////////  
+	/////////////////add the following 2 lines here/////////////////////  
 	  settings         = require('../../../settings.json'),
 	  minifyOutput = require('./minify'),
 	//////////////////////////////////////////// 
@@ -104,7 +107,7 @@ setupMiddleware = function setupMiddleware(blogApp) {
     adminApp.engine('hbs', adminHbs.express3({}));
 
 
-/////////////////////////////////////////////////////
+////////////add the following 4 lines here/////////////////////////////
 	if (settings.minifyOutput === true) {
 	//minify html output
 	blogApp.use(minifyOutput);
