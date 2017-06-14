@@ -1,3 +1,4 @@
-﻿{
-	"minifyOutput": true
+{
+	"minifyOutput": true,
+	"beautify": false
 }
