@@ -1,8 +1,10 @@
 # ghost-minify-output
-ghost middleware to minify compiled handlebars output
+ghost middleware to minify compiled handlebars output and to disable beautify
 
 
-### Instructions
+## Instructions
+
+### minification setup
 
 - Open a console in ghost root dir [`/ghost`] and type:
 ````
@@ -33,8 +35,46 @@ if (settings.minifyOutput === true) {
 ````
 
 You can now enable/disable minification in the `/ghost/settings.json` file.
+`true` = on
+`false` = off
 
-- `true` = on
-- `false` = off
+### beautify setup
+
+(refer to the `example/theme-handler.js` file included in this repo if you dont understand)
+- Open the file `theme-handler.js` located at`ghost/core/server/middleware/`
+- Find the following lines of code:
+````
+activateTheme: function activateTheme(blogApp, activeTheme) {
+        var hbsOptions,
+````
+- Below the above mentioned lines add the following 2 lines of code 
+
+````
+settings = require('../../../settings.json'),
+beautify = settings.beautify,
+````
+- Find the following lines of code:
+````
+hbsOptions = {
+            partialsDir: [config.paths.helperTemplates],
+            onCompile: function onCompile(exhbs, source) {
+                return exhbs.handlebars.compile(source, {preventIndent: true});
+            }
+        };
+````
+- Replace the above mentioned lines with the following lines of code 
+````
+hbsOptions = {
+            partialsDir: [config.paths.helperTemplates],
+            onCompile: function onCompile(exhbs, source) {
+                return exhbs.handlebars.compile(source, {preventIndent: true});
+            },
+			beautify
+
+        };
+````
+You can now enable/disable beautify in the `/ghost/settings.json` file.
+`true` = on
+`false` = off
 
 Done.
