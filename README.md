@@ -34,7 +34,7 @@ if (settings.minifyOutput === true) {
 
 You can now enable/disable minification in the `/ghost/settings.json` file.
 
-`true` = on
-`false` = off
+- `true` = on
+- `false` = off
 
 Done.
